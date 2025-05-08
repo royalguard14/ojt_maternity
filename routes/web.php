@@ -40,12 +40,12 @@ Route::middleware(['auth', 'checkRole:Developer'])->get('/clear-cache', function
     Artisan::call('config:clear');
     Artisan::call('view:clear');
 
-            return redirect()
-            ->route('developer.dashboard')
-            ->with([
-                'success' => 'Clear successfully!',
-                'icon' => 'success'
-            ]);
+    return redirect()
+    ->route('developer.dashboard')
+    ->with([
+        'success' => 'Clear successfully!',
+        'icon' => 'success'
+    ]);
 });
 
 
@@ -89,9 +89,9 @@ Route::prefix('roles')->name('roles.')->middleware(['auth', 'checkRole:Developer
     Route::put('{role}', [RoleController::class, 'update'])->name('update');  
     Route::delete('{role}', [RoleController::class, 'destroy'])->name('destroy'); 
 
-Route::get('/{role}/modules', [ModuleController::class, 'getModulesForRole']);
+    Route::get('/{role}/modules', [ModuleController::class, 'getModulesForRole']);
 
-Route::post('/{role}/modules', [ModuleController::class, 'updateModulesForRole']);
+    Route::post('/{role}/modules', [ModuleController::class, 'updateModulesForRole']);
 
 
 
@@ -110,18 +110,19 @@ Route::prefix('profiles')->name('profiles.')->middleware(['auth'])->group(functi
 
 Route::prefix('patients')->name('patients.')->middleware(['auth'])->group(function () {
     Route::get('/', [ClinicProfileController::class, 'index'])->name('index');
-   Route::post('/store', [ClinicProfileController::class, 'store'])->name('storeprofile');    
-
-
-
-
-
-    // Route::post('/store-mother', [ClinicProfileController::class, 'storeMother'])->name('storeMother');
-    //  Route::post('/store-father', [ClinicProfileController::class, 'storeFather'])->name('storeFather');    
+    Route::post('/store', [ClinicProfileController::class, 'store'])->name('storeprofile');    
+    Route::post('/children', [ClinicProfileController::class, 'storeChild'])->name('storeChild');
     Route::get('/clinic-profiles/{id}', [ClinicProfileController::class, 'show'])->name('show');
+Route::get('/children/{id}', [ClinicProfileController::class, 'showChild']);
+Route::put('/children/{id}', [ClinicProfileController::class, 'updateChild']);
 
-    #Route::put('/{setting}', [MaternalController::class, 'update'])->name('update');  
-    #Route::delete('/{setting}', [MaternalController::class, 'destroy'])->name('destroy'); 
+Route::get('/clinic-profiles/{id}/edit', [ClinicProfileController::class, 'edit']);
+Route::post('/clinic-profiles/update', [ClinicProfileController::class, 'update'])->name('update');
+
+
+
+
+
 });
 
 
@@ -140,5 +141,11 @@ Route::get('/get-barangays/{municipalityId}', function($municipalityId) {
     return response()->json(['barangays' => $barangays]);
 });
 
+Route::get('/get-region-from-province/{provinceId}', function ($provinceId) {
+    $province = \App\Models\Province::find($provinceId);
+    return response()->json([
+        'region_id' => $province ? $province->region_id : null,
+    ]);
+});
 
 
