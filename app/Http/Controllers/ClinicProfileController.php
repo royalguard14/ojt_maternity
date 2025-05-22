@@ -217,10 +217,10 @@ public function store(Request $request)
         'suffix' => 'nullable|string|max:50',
         'birth_date' => 'required|date',
 
-        'pob_region' => 'nullable|string',
-        'pob_province' => 'nullable|string',
-        'pob_municipality' => 'nullable|string',
-        'pob_barangay' => 'nullable|string',
+        'pob1_region' => 'nullable|string',
+        'pob1_province' => 'nullable|string',
+        'pob1_municipality' => 'nullable|string',
+        'pob1_barangay' => 'nullable|string',
 
         'residence_region' => 'nullable|string',
         'residence_province' => 'nullable|string',

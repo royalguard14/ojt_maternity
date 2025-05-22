@@ -376,7 +376,8 @@
                             </div>
                             <hr>
                             <h5>Place of Birth</h5>
-                            <x-form.location-select prefix="pob" :regions="$regions" />
+                            <x-form.location-select prefix="pob1" :regions="$regions" />
+                            
                         </div>
                         {{-- Contact Info Tab --}}
                         <div class="tab-pane fade" id="custom-tabs-two-messages" role="tabpanel"
