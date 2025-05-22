@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
 
-        //Attendant::factory()->count(10)->create();
+        Attendant::factory()->count(10)->create();
 
 
 
@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             ModuleSeeder::class,
             SettingSeeder::class,
             AddressDataSeeder::class,
+            PrinterSetupSeeder::class,
        
             
             
