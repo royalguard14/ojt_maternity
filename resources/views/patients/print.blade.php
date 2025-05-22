@@ -193,7 +193,7 @@ height: {{ $style['height'] ?? '20px' }};
     <script>
     window.onload = () => {
         autoFitText('.auto-fit'); 
-        window.print();         
+        //window.print();         
     };
 </script>
 
