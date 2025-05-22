@@ -20,6 +20,7 @@ class BirthInfo extends Model
         'total_number_of_children_alive_dead',
         'age_of_father',
         'age_of_mother',
+        'attendant_id',
     ];
 
     public function profile()

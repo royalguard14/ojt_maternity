@@ -1,5 +1,5 @@
 <!-- Child Profile Tab -->
-<div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
+
     @if ($profile_clinic->relationshipAsMother && $profile_clinic->relationshipAsMother->children->isNotEmpty())
 
     <table class="table table-head-fixed text-nowrap" id="example3">
@@ -30,9 +30,13 @@
                         <button type="button" class="btn btn-default" onclick="openChildModal({{ $child->id }}, 'edit')">
                           <i class="fas fa-pen"></i>
                         </button>
+
+
+                     @if($profile_clinic->husband && $profile_clinic->husband->exists)
                       <button type="button" class="btn btn-default" onclick="printForm({{ $child->id }})">
   <i class="fas fa-paperclip"></i>
 </button>
+                        @endif
     </div>
 
 
@@ -66,7 +70,6 @@
         Add Child
     </button>
     @endif
-</div>
 
 
 <script>

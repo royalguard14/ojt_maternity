@@ -68,7 +68,7 @@ class PrinterSetupSeeder extends Seeder
     "coi_date" => ["left" => "132.28px", "top" => "1016.69px", "width" => "264.57px"],
     "prepby_name" => ["left" => "510.24px", "top" => "956.22px", "width" => "245.67px"],
     "prepby_title" => ["left" => "517.80px", "top" => "978.90px", "width" => "238.11px"],
-    "prepby_date" => ["left" => "472.44px", "top" => "1016.69px", "width" => "283.46px"]
+    "prepby_date" => ["left" => "472.44px", "top" => "1002.02px", "width" => "283.46px"]
 ];
 
 

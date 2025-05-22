@@ -8,6 +8,8 @@ use App\Models\Municipality;
 use App\Models\Barangay;
 use App\Models\BirthInfo;
 use App\Models\ClinicProfileRelationship;
+use App\Models\Attendant;
+
 use Illuminate\Http\Request;
 use Auth;
 use Carbon\Carbon;
@@ -41,7 +43,9 @@ public function show(string $id)
     ])->findOrFail($id);
 
     $regions = Region::all();
-    return view('patients.view', compact('profile_clinic','regions'));
+
+    $attendants = Attendant::all();
+    return view('patients.view', compact('profile_clinic','regions','attendants'));
 }
 
 
@@ -299,6 +303,7 @@ public function store(Request $request)
 public function storeChild(Request $request)
 {
 
+
     $validated = $request->validate([
         'mother_id' => 'required|exists:clinic_profiles,id',
 
@@ -326,6 +331,7 @@ public function storeChild(Request $request)
         'total_number_of_children_alive_dead' => 'required|integer',
         'age_of_mother' => 'required|integer',
         'age_of_father' => 'required|integer',
+        'attendant' => 'required|integer',
     ]);
 
     $mother = ClinicProfile::find($validated['mother_id']);
@@ -358,6 +364,8 @@ public function storeChild(Request $request)
         'total_number_of_children_alive_dead' => $validated['total_number_of_children_alive_dead'],
         'age_of_mother' => $validated['age_of_mother'],
         'age_of_father' => $validated['age_of_father'],
+'attendant_id' => $validated['attendant'],
+
     ]);
 
     // Find or create the relationship record

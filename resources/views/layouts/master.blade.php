@@ -33,9 +33,26 @@
 <script src="{{ asset('dist/js/chart.js') }}"></script>
 <style type="text/css">
   
-  .labo8, .card-body {
+  .labo8 {
     opacity: 0.8;
   }
+
+.headers {
+  color: yellow;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 
+    -1px -1px 0 black,  
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
+  background-color: rgba(51, 51, 51, 0.5); /* #333 with 50% opacity */
+  border-radius: 8px;
+}
+
+
+
 </style>
 @yield('style')
 
@@ -64,6 +81,9 @@
         </form>
       </li>
     </ul>
+
+
+
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
@@ -189,18 +209,14 @@
 </aside>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper" 
-
-
 style="background: url('{{ asset('dist/img/bgc.jpg') }}') no-repeat center center fixed; background-size: cover;"
-
-
 >
   <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">@yield('header')</h1>
+          <h1 class="m-0 headers" >@yield('header')</h1>
         </div><!-- /.col -->
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->

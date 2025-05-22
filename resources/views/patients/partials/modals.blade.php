@@ -214,7 +214,25 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <!-- Name Fields -->
+               
+
+
+<div class="card card-tabs">
+  <div class="card-header p-0 pt-1">
+    <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="custom-tabs-one-personal-tab" data-toggle="pill" href="#custom-tabs-one-personal" role="tab" aria-controls="custom-tabs-one-personal" aria-selected="true">Personal Info</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="custom-tabs-one-clinic-tab" data-toggle="pill" href="#custom-tabs-one-clinic" role="tab" aria-controls="custom-tabs-one-clinic" aria-selected="false">Clinic Info</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <div class="tab-content" id="custom-tabs-one-tabContent">
+      <div class="tab-pane fade show active" id="custom-tabs-one-personal" role="tabpanel" aria-labelledby="custom-tabs-one-personal-tab">
+        <!-- Personal Info content goes here -->
+             <!-- Name Fields -->
                     <div class="form-row">
                         <div class="form-group col-md-3">
                             <label for="first_name">First Name</label>
@@ -252,12 +270,14 @@
                     <hr>
                     <h5>Place of Birth</h5>
                     <x-form.location-select prefix="pob" :regions="$regions" />
+      </div>
+      <div class="tab-pane fade" id="custom-tabs-one-clinic" role="tabpanel" aria-labelledby="custom-tabs-one-clinic-tab">
+        <!-- Clinic Info content goes here -->
                     <!-- Birth Info Section -->
-                    <hr>
                     <h5>Birth Information</h5>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <x-reference.birth-type ref="RBirthType" name="type_of_birth"  />
+                            <x-reference.birth-type ref="RBirthType" name="type_of_birth" label="Type of Birth" />
                         </div>
                         <div class="form-group col-md-4">
                             <x-reference.birth-sequence ref="RBirthOrder" name="child_was" label="Child Was" />
@@ -294,6 +314,51 @@
                             <input type="number" name="age_of_father" class="form-control" min="0" value="{{ $profile_clinic->husband?->age }}" readonly>
                         </div>
                     </div>
+
+                    <select class="form-control" name="attendant" required>
+
+                        <option selected >Select Attendant</option>
+
+                            @foreach($attendants as $data)
+
+<option value="{{ $data->id }}" >{{ $data->name }}</option>
+@endforeach
+
+                    </select>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-success">Save Child</button>

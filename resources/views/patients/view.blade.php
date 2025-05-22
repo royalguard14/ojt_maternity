@@ -41,19 +41,14 @@ $roles = [];
                     <li class="nav-item">
                         <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Husband Profile</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">Child</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="custom-tabs-one-settings-tab" data-toggle="pill" href="#custom-tabs-one-settings" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">Form Generate</a>
-                    </li>
+        
                 </ul>
             </div>
             <div class="card-body">
                 <div class="tab-content" id="custom-tabs-one-tabContent">
                     @include('patients.tabs.patient')
                     @include('patients.tabs.husband')
-                    @include('patients.tabs.children')
+        
                     @include('patients.tabs.settings')
                     @include('patients.partials.modals')
                 </div>
@@ -262,6 +257,22 @@ console.log(data.profile_id)
 </section>
 <!-- Right col: Role List -->
 <section class="col-lg-6 connectedSortable">
+
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">List of Children</h3>
+
+           
+                <!-- /.card-tools -->
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+             @include('patients.tabs.children')
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
 </section>
 </div>
 @endsection
