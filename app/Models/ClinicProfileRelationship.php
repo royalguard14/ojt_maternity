@@ -9,11 +9,14 @@ class ClinicProfileRelationship extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'mother_id',
-        'father_id',
-        'child_ids',
-    ];
+   protected $fillable = [
+    'mother_id',
+    'father_id',
+    'child_ids',
+    'is_married',
+    'date_of_marriage',
+    'place_of_marriage',
+];
 
     protected $casts = [
         'child_ids' => 'array',
@@ -39,4 +42,10 @@ class ClinicProfileRelationship extends Model
     {
         return ClinicProfile::whereIn('id', $this->child_ids ?? [])->get();
     }
+
+
+
+
+
+    
 }

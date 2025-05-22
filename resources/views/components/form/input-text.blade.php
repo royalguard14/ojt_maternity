@@ -8,7 +8,9 @@
 ])
 
 <div class="form-group">
-    <label for="{{ $id ?? $name }}">{{ $label }} @if($required)<span class="text-danger">*</span>@endif</label>
+    <label for="{{ $id ?? $name }}" class="form-label text-truncate d-block" style="width: 100%;" title="{{ $label }}">
+    {{ $label }} @if($required)<span class="text-danger">*</span>@endif
+</label>
     <input 
         type="text" 
         name="{{ $name }}" 

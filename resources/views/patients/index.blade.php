@@ -128,18 +128,11 @@ Patient Management
         </div>
         {{-- Settings Tab --}}
         <div class="tab-pane fade" id="custom-tabs-two-settings" role="tabpanel" aria-labelledby="custom-tabs-two-settings-tab">
-          <div class="form-group">
-            <label for="occupation">Occupation</label>
-            <input type="text" name="occupation" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="religion">Religion</label>
-            <input type="text" name="religion" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="citizenship">Citizenship</label>
-            <input type="text" name="citizenship" class="form-control">
-        </div>
+
+ <x-reference.occupation ref="ROccupation" name="occupation" />
+
+   <x-reference.religion ref="RReligion" name="religion" label="Religion" />
+    <x-reference.citizenship ref="RCitizenship" name="citizenship" id="edit_citizenship" label="Citizenship" />
     </div>
 </div>
 </div>

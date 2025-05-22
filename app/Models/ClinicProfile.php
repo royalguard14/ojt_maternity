@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use App\Models\Province;
 use App\Models\Municipality;
 use App\Models\Barangay;
+use App\Models\BirthInfo;
 
 class ClinicProfile extends Model
 {
@@ -96,6 +97,9 @@ public function getFullResidenceAttribute()
         return $this->hasOne(ClinicProfileRelationship::class, 'father_id');
     }
 
+
+    
+
     public function husband()
     {
         return $this->hasOneThrough(
@@ -145,6 +149,37 @@ public function birthBarangay()
 }
 
 
+public function residenceBarangay()
+{
+    return $this->belongsTo(Barangay::class, 'residence_brgy', 'barangay_id');
+}
+
+public function residenceCity()
+{
+    return $this->belongsTo(Municipality::class, 'residence_city', 'municipality_id');
+}
+
+public function residenceProvince()
+{
+    return $this->belongsTo(Province::class, 'residence_province', 'province_id');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 public function getFullPlaceOfBirthAttribute()
 {
@@ -163,9 +198,10 @@ public function getFullPlaceOfBirthAttribute()
 
 
 
-
-
-
+public function birthInfo()
+{
+    return $this->hasOne(BirthInfo::class, 'profile_id'); // adjust foreign key accordingly
+}
 
 
 

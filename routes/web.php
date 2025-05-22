@@ -34,7 +34,7 @@ Route::get('/', function () {
 
 
 
-Route::middleware(['auth', 'checkRole:Developer'])->get('/clear-cache', function () {
+Route::middleware(['auth', 'checkRole:Developer'])->get('/clear', function () {
     Artisan::call('cache:clear');
     Artisan::call('route:clear');
     Artisan::call('config:clear');
@@ -120,6 +120,7 @@ Route::get('/clinic-profiles/{id}/edit', [ClinicProfileController::class, 'edit'
 Route::post('/clinic-profiles/update', [ClinicProfileController::class, 'update'])->name('update');
 
 
+Route::get('/children/{id}/print', [ClinicProfileController::class, 'print'])->name('children.print');
 
 
 

@@ -1,4 +1,3 @@
-$(document).ready(function() {
 
 
     document.getElementById('birth_date').addEventListener('change', function () {
