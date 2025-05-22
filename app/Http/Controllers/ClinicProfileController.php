@@ -244,10 +244,10 @@ public function store(Request $request)
     $profile->suffix = $validated['suffix'] ?? null;
     $profile->birth_date = $validated['birth_date'];
 
-    $profile->place_of_birth_province = $validated['pob_province'] ?? null;
-    $profile->place_of_birth_city = $validated['pob_municipality'] ?? null;
-    $profile->place_of_birth_brgy = $validated['pob_barangay'] ?? null;
-    $profile->place_of_birth_country = $validated['pob_country'] ?? null;
+    $profile->place_of_birth_province = $validated['pob1_province'] ?? null;
+    $profile->place_of_birth_city = $validated['pob1_municipality'] ?? null;
+    $profile->place_of_birth_brgy = $validated['pob1_barangay'] ?? null;
+    $profile->place_of_birth_country = $validated['pob1_country'] ?? null;
 
     $profile->residence_province = $validated['residence_province'] ?? null;
     $profile->residence_city = $validated['residence_municipality'] ?? null;
