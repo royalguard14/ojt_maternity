@@ -141,28 +141,19 @@ public function edit($id)
 
 public function update(Request $request)
 {
-
-dd($request->all());
-
 $validated = $request->validate([
     'first_name' => 'required|string|max:255',
     'middle_name' => 'nullable|string|max:255',
     'last_name' => 'required|string|max:255',
     'suffix' => 'nullable|string|max:50',
-    
     'birth_date' => 'required|date',
-    
-
     'aedit_place_of_birth_province' => 'nullable|integer',
     'aedit_place_of_birth_municipality' => 'nullable|integer',
     'aedit_place_of_birth_barangay' => 'nullable|integer',
-
-   
     'aedit_residence_province' => 'nullable|integer',
     'aedit_residence_municipality' => 'nullable|integer',
     'aedit_residence_barangay' => 'nullable|integer',
-
-    'phone' => 'nullable|string|max:20', // optional: Philippines mobile format
+    'phone' => 'nullable|string|max:20',
     'occupation' => 'nullable|string|max:255',
     'religion' => 'nullable|string|max:255',
     'citizenship' => 'nullable|string|max:255',
@@ -182,13 +173,13 @@ $profile->fill(array_filter([
     'suffix' => $request->has('suffix') ? $validated['suffix'] : $profile->suffix,
     'birth_date' => $validated['birth_date'],
 
-    'place_of_birth_province' => $request->has('edit_place_of_birth_province') ? $validated['edit_place_of_birth_province'] : $profile->place_of_birth_province,
-    'place_of_birth_city' => $request->has('edit_place_of_birth_municipality') ? $validated['edit_place_of_birth_municipality'] : $profile->place_of_birth_city,
-    'place_of_birth_brgy' => $request->has('edit_place_of_birth_barangay') ? $validated['edit_place_of_birth_barangay'] : $profile->place_of_birth_brgy,
+    'place_of_birth_province' => $request->has('aedit_place_of_birth_province') ? $validated['aedit_place_of_birth_province'] : $profile->place_of_birth_province,
+    'place_of_birth_city' => $request->has('aedit_place_of_birth_municipality') ? $validated['aedit_place_of_birth_municipality'] : $profile->place_of_birth_city,
+    'place_of_birth_brgy' => $request->has('aedit_place_of_birth_barangay') ? $validated['aedit_place_of_birth_barangay'] : $profile->place_of_birth_brgy,
 
-    'residence_province' => $request->has('edit_residence_province') ? $validated['edit_residence_province'] : $profile->residence_province,
-    'residence_city' => $request->has('edit_residence_municipality') ? $validated['edit_residence_municipality'] : $profile->residence_city,
-    'residence_brgy' => $request->has('edit_residence_barangay') ? $validated['edit_residence_barangay'] : $profile->residence_brgy,
+    'residence_province' => $request->has('aedit_residence_province') ? $validated['aedit_residence_province'] : $profile->residence_province,
+    'residence_city' => $request->has('aedit_residence_municipality') ? $validated['aedit_residence_municipality'] : $profile->residence_city,
+    'residence_brgy' => $request->has('aedit_residence_barangay') ? $validated['aedit_residence_barangay'] : $profile->residence_brgy,
 
     'phone' => $request->has('phone') ? $validated['phone'] : $profile->phone,
     'occupation' => $request->has('occupation') ? $validated['occupation'] : $profile->occupation,
