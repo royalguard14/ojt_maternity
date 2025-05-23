@@ -142,7 +142,7 @@ public function edit($id)
 public function update(Request $request)
 {
 
-
+dd($request->all());
 
 $validated = $request->validate([
     'first_name' => 'required|string|max:255',
@@ -213,6 +213,8 @@ return redirect()->route('patients.show', $redirectId)->with('success', 'Profile
 
 public function store(Request $request)
 {
+
+
  
     $validated = $request->validate([
         'first_name' => 'required|string|max:255',

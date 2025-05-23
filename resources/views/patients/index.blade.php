@@ -110,7 +110,7 @@ Patient Management
 
             <hr>
             <h5>Place of Birth</h5>
-   <x-form.location-select prefix="pob" :regions="$regions" />
+   <x-form.location-select prefix="pob1" :regions="$regions" />
 
         </div>
         {{-- Messages Tab --}}
