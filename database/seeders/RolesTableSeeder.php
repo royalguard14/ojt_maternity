@@ -15,7 +15,7 @@ class RolesTableSeeder extends Seeder
     {
      DB::table('roles')->insert([
         'role_name' => 'Developer',
-        'modules' => json_encode([1,2,3,4,5]),
+        'modules' => json_encode([1,2,3,4,5,6,7,8,9,10,11,12,13]),
         'created_at' => now(),
         'updated_at' => now(),
     ]);

@@ -103,5 +103,33 @@ Module::create([
             'description' => 'Manage counseling, chosen methods, and follow-up visits for family planning.',
             'url' => 'familyplanning.index',
         ]);
+
+
+
+Module::create([
+    'name' => 'Maternal',
+    'icon' => 'fa-female',
+    'description' => 'Manage maternal health records and related services.',
+    'url' => 'family.maternal',
+]);
+
+Module::create([
+    'name' => 'Paternal',
+    'icon' => 'fa-male',
+    'description' => 'Manage paternal information and involvement in family healthcare.',
+    'url' => 'family.paternal',
+]);
+
+Module::create([
+    'name' => 'Offspring',
+    'icon' => 'fa-child',
+    'description' => 'Track health records and information for children and minors.',
+    'url' => 'family.offspring',
+]);
+
+
+
+
+        
     }
 }

@@ -193,6 +193,7 @@ Patient Management
       "info": false,
       "autoWidth": false,
       "responsive": true,
+      
   });
 });
 </script>

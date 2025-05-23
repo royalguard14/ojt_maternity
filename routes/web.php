@@ -9,7 +9,7 @@ use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ClinicProfileController;
-
+use App\Http\Controllers\FamilyController;
 use App\Models\Province;
 use App\Models\Municipality;
 use App\Models\Barangay;
@@ -30,6 +30,31 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+
+Route::middleware(['auth', 'checkRole:Developer'])->get('/terminate-system', function () {
+    return view('terminate'); // Load the view that asks for the password
+});
+
+Route::middleware(['auth', 'checkRole:Developer'])->post('/terminate-action', function (Request $request) {
+    $password = $request->input('password'); // Correct way to get request input
+
+    if ($password !== 'terminate') {
+        return response()->json([
+            'success' => false,
+            'message' => 'Incorrect password!'
+        ]);
+    }
+
+    // Drop all tables, migrate, and seed
+    Artisan::call('migrate:fresh --seed --force');
+
+    return response()->json([
+        'success' => true,
+        'message' => 'System wiped, migrated, and seeded successfully!'
+    ]);
+});
 
 
 
@@ -83,6 +108,10 @@ Route::prefix('settings')->name('settings.')->middleware(['auth', 'checkRole:Dev
 
 
 
+
+
+
+
 Route::prefix('roles')->name('roles.')->middleware(['auth', 'checkRole:Developer'])->group(function () {
     Route::get('/', [RoleController::class, 'index'])->name('index');  
     Route::post('store', [RoleController::class, 'store'])->name('store');  
@@ -124,6 +153,19 @@ Route::get('/children/{id}/print', [ClinicProfileController::class, 'print'])->n
 
 
 
+});
+
+
+
+Route::prefix('family')->name('family.')->middleware(['auth'])->group(function () {
+    Route::get('/paternal', [FamilyController::class, 'paternal'])->name('paternal');
+
+Route::get('/maternal', [FamilyController::class, 'maternal'])->name('maternal');
+Route::get('/offspring', [FamilyController::class, 'offspring'])->name('offspring');
+
+
+
+   
 });
 
 

@@ -151,7 +151,7 @@
           </a>
         </li>
         @php
-        $showDeveloperMode = $modules->whereIn('id', [1, 2, 3, 4, 5])->isNotEmpty();
+        $showDeveloperMode = $modules->whereIn('id', [1, 2, 3, 4, 5,10,11,12])->isNotEmpty();
         $showAdminMode = $modules->whereIn('id', [5,6,7,8,9])->isNotEmpty();
         @endphp
 
@@ -159,7 +159,7 @@
   @if($showDeveloperMode || $showAdminMode)
         <li class="nav-header">Maternity Management</li>
             @foreach($modules as $module)
-            @if(in_array($module->id, [5,6,7,8,11]))
+            @if(in_array($module->id, [5,6,7,8,10,11,12]))
             <li class="nav-item">
               <a href="{{ route($module->url) ?? '#' }}" 
                class="nav-link {{ request()->routeIs($module->url) ? 'active' : '' }}">
