@@ -34,28 +34,22 @@ Route::get('/', function () {
 
 
 Route::middleware(['auth', 'checkRole:Developer'])->get('/terminate-system', function () {
-    return view('terminate'); // Load the view that asks for the password
+    return view('terminate');
 });
 
 Route::middleware(['auth', 'checkRole:Developer'])->post('/terminate-action', function (Request $request) {
-    $password = $request->input('password'); // Correct way to get request input
+   // $password = $request->input('password');
+
+$password = 'terminate';
 
     if ($password !== 'terminate') {
-        return response()->json([
-            'success' => false,
-            'message' => 'Incorrect password!'
-        ]);
+        return redirect()->back()->with('error', 'Incorrect password!');
     }
 
-    // Drop all tables, migrate, and seed
     Artisan::call('migrate:fresh --seed --force');
 
-    return response()->json([
-        'success' => true,
-        'message' => 'System wiped, migrated, and seeded successfully!'
-    ]);
+    return redirect('/dashboard/developer')->with('success', 'System wiped and reseeded!');
 });
-
 
 
 
