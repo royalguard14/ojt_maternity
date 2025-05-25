@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends($layout)
 @section('header')
 Patient Management
 @endsection

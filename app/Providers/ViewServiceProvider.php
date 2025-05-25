@@ -18,25 +18,31 @@ class ViewServiceProvider extends ServiceProvider
         //
     }
 
-    /**
-     * Bootstrap services.
-     */
     public function boot(): void
-    {
-        // Pass profile and modules to master layout
-    View::composer('layouts.master', function ($view) {
+{
+    // Pass profile and modules to master and master-front layouts
+    View::composer(['layouts.master', 'layouts.master-front'], function ($view) {
         if (Auth::check()) {
             $profile = Profile::where('user_id', Auth::id())->first();
             $view->with('profile', $profile);
 
             $role = Auth::user()->role;
-            $modules = $role->modules;  
+            $modules = Module::whereIn('id', $role->modules)->get();
 
-            
-            $modules = Module::whereIn('id', $modules)->get();
-            $view
-            ->with('modules', $modules);
+            $view->with('modules', $modules);
         }
     });
-    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 }

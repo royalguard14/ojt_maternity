@@ -42,4 +42,9 @@ class DashboardController extends Controller
     
         return view('dashboard.user');
     }
+
+
+    public function clerk(){
+        return view('dashboard.clerk');
+    }
 }

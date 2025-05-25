@@ -1,6 +1,7 @@
-
-
-@extends('layouts.master')
+@extends($layout)
+@section('header')
+Offsprint Management
+@endsection
 @section('content')
 <div class="card">
     <div class="card-header">

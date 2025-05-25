@@ -74,7 +74,7 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/');
+         return redirect('/login');  // Redirect to login page
     }
 
     /**
@@ -98,6 +98,13 @@ protected function authenticated(Request $request, $user)
         if ($user->role->role_name == 'User') {
             return redirect()->route('user.dashboard');
         }
+
+
+        if ($user->role->role_name == 'Clerk') {
+            return redirect()->route('clerk.dashboard');
+        }
+
+
     }
 
     // If no valid role or role_name, fallback to the home page

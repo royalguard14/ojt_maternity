@@ -29,6 +29,9 @@ class BladeServiceProvider extends ServiceProvider
     Blade::if('user', function () {
         return Auth::check() && Auth::user()->role->role_name == 'User';
     });
+        Blade::if('clerk', function () {
+        return Auth::check() && Auth::user()->role->role_name == 'Clerk';
+    });
 
     
     }

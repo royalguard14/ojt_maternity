@@ -25,11 +25,30 @@ class ClinicProfileController extends Controller
 
     public function index()
     {
-      #$mothers = ClinicProfile::where('data_spec', 'mother')->get()->toArray();
+      
       $mothers = ClinicProfile::where('data_spec', 'mother')->get();
 
+
+
+
+$layout = auth()->user()->role->role_name === 'Developer'
+    ? 'layouts.master'
+    : 'layouts.master-front';
+
+
+
+
+
+
+
+
+
+
+
+
+
       $regions = Region::all();
-      return view('patients.index',compact('mothers','regions'));
+      return view('patients.index',compact('mothers','regions','layout'));
   }
 
 
@@ -44,8 +63,26 @@ public function show(string $id)
 
     $regions = Region::all();
 
+
+
+
+$layout = auth()->user()->role->role_name === 'Developer'
+    ? 'layouts.master'
+    : 'layouts.master-front';
+
+
+
+
+
+
+
+
+
+
+
+
     $attendants = Attendant::all();
-    return view('patients.view', compact('profile_clinic','regions','attendants'));
+    return view('patients.view', compact('profile_clinic','regions','attendants','layout'));
 }
 
 

@@ -1,4 +1,7 @@
-@extends('layouts.master')
+@extends($layout)
+@section('header')
+Maternal Management
+@endsection
 @section('content')
 <div class="card">
     <div class="card-header">

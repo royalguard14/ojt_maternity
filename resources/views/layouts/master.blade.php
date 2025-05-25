@@ -209,14 +209,14 @@
 </aside>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper" 
-style="background: url('{{ asset('dist/img/bgc.jpg') }}') no-repeat center center fixed; background-size: cover;"
+
 >
   <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 headers" >@yield('header')</h1>
+          <h1 class="m-0 " >@yield('header')</h1>
         </div><!-- /.col -->
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->

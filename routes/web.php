@@ -27,11 +27,11 @@ use App\Models\Barangay;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
 
-
+Route::get('/error', function () {return view('error.index');})->name('error');
 
 Route::middleware(['auth', 'checkRole:Developer'])->get('/terminate-system', function () {
     return view('terminate');
@@ -73,8 +73,14 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Nasa BladeServiceProvider setup nito
-Route::get('/dashboard/developer', [DashboardController::class, 'developer'])->name('developer.dashboard');
-Route::get('/dashboard/user', [DashboardController::class, 'user'])->name('user.dashboard');
+Route::get('/dashboard/developer', [DashboardController::class, 'developer'])
+->name('developer.dashboard')
+->middleware('checkRole:Developer');
+
+
+Route::get('/dashboard/clerk', [DashboardController::class, 'clerk'])
+->name('clerk.dashboard')
+->middleware('checkRole:Clerk');
 
 
 
