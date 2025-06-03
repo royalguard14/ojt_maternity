@@ -88,7 +88,7 @@ $layout = auth()->user()->role->role_name === 'Developer'
 
 
 
-$relationship = ClinicProfileRelationship::findOrFail(3);
+$relationship = ClinicProfileRelationship::findOrFail($id);
 
     $attendants = Attendant::all();
     return view('patients.view', compact('profile_clinic','regions','attendants','layout','relationship'));
