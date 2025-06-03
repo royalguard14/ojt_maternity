@@ -41,14 +41,19 @@ $roles = [];
                     <li class="nav-item">
                         <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Husband Profile</a>
                     </li>
-        
+
+
+  @if ($profile_clinic->husband)
+                    <li class="nav-item">
+                        <a class="nav-link" id="custom-tabs-one-mc-tab" data-toggle="pill" href="#custom-tabs-one-mc" role="tab" aria-controls="custom-tabs-one-mc" aria-selected="false">Marriage Details</a>
+                    </li>
+     @endif   
                 </ul>
             </div>
             <div class="card-body">
                 <div class="tab-content" id="custom-tabs-one-tabContent">
                     @include('patients.tabs.patient')
                     @include('patients.tabs.husband')
-        
                     @include('patients.tabs.settings')
                     @include('patients.partials.modals')
                 </div>

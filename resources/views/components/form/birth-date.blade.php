@@ -31,6 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const warning = document.getElementById('{{ $name }}-warning-date');
     let timeout = null;
 
+
+
     input.addEventListener('change', () => {
         const selectedDate = new Date(input.value);
         const today = new Date();

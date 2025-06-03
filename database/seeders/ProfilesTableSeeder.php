@@ -28,5 +28,27 @@ class ProfilesTableSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+
+
+
+      Profile::create([
+            'user_id' => User::where('username', 'clerk')->first()->id,
+            'firstname' => 'Ivy Maria',
+            'lastname' => 'Sabayday',
+            'phone_number' => '9277294457',
+            'address' => 'Doongan',
+            'profile_picture' => 'path/to/pic.jpg',
+            'birthdate' => '1993-10-13',
+            'gender' => 'Male',
+            'nationality' => 'Filipino',
+            'bio' => 'Developer.',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+
+
+
+
     }
 }

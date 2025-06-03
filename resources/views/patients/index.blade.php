@@ -96,7 +96,7 @@ Patient Management
               <div class="row">
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <label for="birth_date">Date of Birth <span class="text-danger">*</span></label>
+                        <label for="birth_date">Date of Birth<span class="text-danger">*</span></label>
                         <input type="date" name="birth_date" id="birth_date" class="form-control" required>
                     </div>
                 </div>
@@ -137,7 +137,7 @@ Patient Management
 </div>
 </div>
 <div class="card-footer">
-  <button type="button" onclick="submitForm()" class="btn btn-primary col-lg-12">Register Patient</button>
+  <button type="button" onclick="submitForm()" class="btn btn-primary col-lg-12" id="submitButton">Register Patient</button>
 </div>
 </div>
 </form>
@@ -171,7 +171,7 @@ Patient Management
 
                     <a href="{{ route('patients.show', $data['id']) }}" class="btn btn-sm btn-primary">View Details</a>
 
-                    <button class="btn btn-sm btn-danger">Delete</button>
+                    {{-- <button class="btn btn-sm btn-danger">Delete</button> --}}
                 </td>
             </tr>
             @endforeach

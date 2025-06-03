@@ -143,6 +143,15 @@
   document.getElementById('attendant').value       = att.name
   ? `${att.name} (${att.position})`
   : '';
+
+
+
+const attendantSelect = document.querySelector('select[name="eattendant"]');
+if (attendantSelect && att.id) {
+  attendantSelect.value = att.id;
+}
+
+
         // 6) If editing, set form action
   if (mode === 'edit') {
       document.getElementById('editChildForm').action = `/patients/children/${id}`;

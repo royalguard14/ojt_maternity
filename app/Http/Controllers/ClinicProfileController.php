@@ -18,6 +18,24 @@ class ClinicProfileController extends Controller
 {
 
 
+public function updateMC(Request $request, $id)
+{
+    $relationship = ClinicProfileRelationship::findOrFail($id);
+
+    $validated = $request->validate([
+        'is_married' => 'nullable|boolean',
+        'date_of_marriage' => 'nullable|date',
+        'place_of_marriage' => 'nullable|string|max:255',
+    ]);
+
+    $relationship->update([
+        'is_married' => $request->has('is_married'),
+        'date_of_marriage' => $validated['date_of_marriage'],
+        'place_of_marriage' => $validated['place_of_marriage'],
+    ]);
+
+    return redirect()->back()->with('success', 'Marriage information updated successfully.');
+}
 
 
 
@@ -64,25 +82,16 @@ public function show(string $id)
     $regions = Region::all();
 
 
-
-
 $layout = auth()->user()->role->role_name === 'Developer'
     ? 'layouts.master'
     : 'layouts.master-front';
 
 
 
-
-
-
-
-
-
-
-
+$relationship = ClinicProfileRelationship::findOrFail(3);
 
     $attendants = Attendant::all();
-    return view('patients.view', compact('profile_clinic','regions','attendants','layout'));
+    return view('patients.view', compact('profile_clinic','regions','attendants','layout','relationship'));
 }
 
 
@@ -468,7 +477,7 @@ public function updateChild(Request $request, $id)
 
 
 
-//dd($request->all());
+#dd($request->all());
     // Validate input
     $validated = $request->validate([
         'edit_first_name' => 'required|string|max:255',
@@ -491,6 +500,7 @@ public function updateChild(Request $request, $id)
         'total_number_of_children_alive_dead' => 'nullable|integer|min:0',
         'age_of_mother' => 'nullable|integer|min:0',
         'age_of_father' => 'nullable|integer|min:0',
+        'eattendant' => 'required|integer|min:0',
     ]);
 
     // Build update data for ClinicProfile
@@ -529,6 +539,8 @@ public function updateChild(Request $request, $id)
             'total_number_of_children_alive_dead' => $validated['total_number_of_children_alive_dead'] ?? null,
             'age_of_mother' => $validated['age_of_mother'] ?? null,
             'age_of_father' => $validated['age_of_father'] ?? null,
+            'attendant_id' => $validated['eattendant'] ?? null,
+
         ]
     );
 

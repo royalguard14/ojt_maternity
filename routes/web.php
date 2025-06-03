@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ClinicProfileController;
 use App\Http\Controllers\FamilyController;
+use App\Http\Controllers\AttendantController;
 use App\Models\Province;
 use App\Models\Municipality;
 use App\Models\Barangay;
@@ -109,7 +110,12 @@ Route::prefix('settings')->name('settings.')->middleware(['auth', 'checkRole:Dev
 
 
 
-
+Route::prefix('attendant')->name('attendant.')->middleware(['auth', 'checkRole:Developer'])->group(function () {
+    Route::get('/', [AttendantController::class, 'index'])->name('index');  
+    Route::post('store', [AttendantController::class, 'store'])->name('store');  
+    Route::put('{id}', [AttendantController::class, 'update'])->name('update');  
+    Route::delete('{id}', [AttendantController::class, 'destroy'])->name('destroy'); 
+});
 
 
 Route::prefix('roles')->name('roles.')->middleware(['auth', 'checkRole:Developer'])->group(function () {
@@ -150,6 +156,8 @@ Route::post('/clinic-profiles/update', [ClinicProfileController::class, 'update'
 
 
 Route::get('/children/{id}/print', [ClinicProfileController::class, 'print'])->name('children.print');
+
+Route::put('/clinic-relationship/{id}', [ClinicProfileController::class, 'updateMC'])->name('updateMC');
 
 
 

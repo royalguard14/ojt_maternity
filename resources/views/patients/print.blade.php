@@ -10,7 +10,8 @@
     $placeOfMarriage = $relationship->place_of_marriage ?? '';
     $placeParts = explode('|', $placeOfMarriage);
 
-    $now = Carbon::now();
+    $now = Carbon::now('Asia/Manila');
+
     $formattedDate = $now->format('F j, Y'); // e.g. February 27, 2025
     $formattedTime = $now->format('g:i A');  // e.g. 4:00 AM
     $formattedTime = str_replace(['AM', 'PM'], ['A.M.', 'P.M.'], $formattedTime);
@@ -45,9 +46,9 @@
             font-family: "Times New Roman", serif;
             font-size: 14px;
             line-height: 1;
-            : 24px;
-            background-color: rgba(255, 255, 0, 0.1);
-            border: 1px dashed #bbb;
+            height: 24px;
+            /*background-color: rgba(255, 255, 0, 0.1);
+            border: 1px dashed #bbb;*/
         }
         .label-field .auto-fit {
             display: inline-block;
@@ -171,8 +172,11 @@ height: {{ $style['height'] ?? '20px' }};
         </span>
     </div>
 
+
+
+
     {{-- Prepared by --}}
-    <div class="label-field prepby_name"><span class="auto-fit">Ghaizar A. Bautista</span></div>
+    <div class="label-field prepby_name"><span class="auto-fit">{{auth()->user()->profile?->fullName}}</span></div>
     <div class="label-field prepby_title"><span class="auto-fit">Clerk</span></div>
 
     <script>
@@ -193,7 +197,7 @@ height: {{ $style['height'] ?? '20px' }};
     <script>
     window.onload = () => {
         autoFitText('.auto-fit'); 
-        //window.print();         
+        window.print();         
     };
 </script>
 

@@ -181,6 +181,23 @@
             </div>
         </div>
 
+
+
+                 <select class="form-control" name="eattendant" required>
+
+                        <option >Select Attendant</option>
+
+                            @foreach($attendants as $data)
+
+<option value="{{ $data->id }}" >{{ $data->name }}</option>
+@endforeach
+
+                    </select>
+
+
+
+
+
                     </div><!-- /.tab-pane -->
 
                 </div><!-- /.tab-content -->

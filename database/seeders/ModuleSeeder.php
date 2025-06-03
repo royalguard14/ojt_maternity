@@ -64,10 +64,6 @@ Module::create([
 
 
 
-
-
-
-
         
         Module::create([
             'name' => 'Patient Management',
@@ -76,33 +72,33 @@ Module::create([
             'url' => 'patients.index',
         ]);
 
-        Module::create([
-            'name' => 'Prenatal Checkups',
-            'icon' => 'fa-stethoscope',
-            'description' => 'Record prenatal vitals, ultrasound results, and scheduled visits.',
-            'url' => 'prenatal.index',
-        ]);
+        // Module::create([
+        //     'name' => 'Prenatal Checkups',
+        //     'icon' => 'fa-stethoscope',
+        //     'description' => 'Record prenatal vitals, ultrasound results, and scheduled visits.',
+        //     'url' => 'prenatal.index',
+        // ]);
 
-        Module::create([
-            'name' => 'Childbirth Records',
-            'icon' => 'fa-heartbeat',
-            'description' => 'Record delivery details, birth weight, and APGAR scores.',
-            'url' => 'childbirth.index',
-        ]);
+        // Module::create([
+        //     'name' => 'Childbirth Records',
+        //     'icon' => 'fa-heartbeat',
+        //     'description' => 'Record delivery details, birth weight, and APGAR scores.',
+        //     'url' => 'childbirth.index',
+        // ]);
 
-        Module::create([
-            'name' => 'Postnatal Monitoring',
-            'icon' => 'fa-baby-carriage',
-            'description' => 'Monitor the health and vaccinations of mothers and infants after birth.',
-            'url' => 'postnatal.index',
-        ]);
+        // Module::create([
+        //     'name' => 'Postnatal Monitoring',
+        //     'icon' => 'fa-baby-carriage',
+        //     'description' => 'Monitor the health and vaccinations of mothers and infants after birth.',
+        //     'url' => 'postnatal.index',
+        // ]);
 
-        Module::create([
-            'name' => 'Family Planning Services',
-            'icon' => 'fa-venus-mars',
-            'description' => 'Manage counseling, chosen methods, and follow-up visits for family planning.',
-            'url' => 'familyplanning.index',
-        ]);
+        // Module::create([
+        //     'name' => 'Family Planning Services',
+        //     'icon' => 'fa-venus-mars',
+        //     'description' => 'Manage counseling, chosen methods, and follow-up visits for family planning.',
+        //     'url' => 'familyplanning.index',
+        // ]);
 
 
 
@@ -125,6 +121,16 @@ Module::create([
     'icon' => 'fa-child',
     'description' => 'Track health records and information for children and minors.',
     'url' => 'family.offspring',
+]);
+
+
+
+
+Module::create([
+    'name' => 'Attendant',
+    'icon' => 'fa-users',
+    'description' => 'Manage Attendant',
+    'url' => 'attendant.index',
 ]);
 
 

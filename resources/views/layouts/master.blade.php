@@ -151,8 +151,8 @@
           </a>
         </li>
         @php
-        $showDeveloperMode = $modules->whereIn('id', [1, 2, 3, 4, 5,10,11,12])->isNotEmpty();
-        $showAdminMode = $modules->whereIn('id', [5,6,7,8,9])->isNotEmpty();
+        $showDeveloperMode = $modules->whereIn('id', [1, 2, 3, 4, 5,6,7,8,9])->isNotEmpty();
+        $showAdminMode = $modules->whereIn('id', [5,6,7,8])->isNotEmpty();
         @endphp
 
 
@@ -188,7 +188,7 @@
           </a>
           <ul class="nav nav-treeview">
             @foreach($modules as $module)
-            @if(in_array($module->id, [1, 2, 3, 4]))
+            @if(in_array($module->id, [1, 2, 3, 4, 9]))
             <li class="nav-item">
               <a href="{{ route($module->url) ?? '#' }}" 
                class="nav-link {{ request()->routeIs($module->url) ? 'active' : '' }}">
