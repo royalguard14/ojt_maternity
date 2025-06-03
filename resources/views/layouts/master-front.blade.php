@@ -81,8 +81,8 @@
           <span class="brand-text font-weight-light">Crescent Birthing clinic</span>
         </a>
         @php
-        $showDeveloperMode = $modules->whereIn('id', [1, 2, 3, 4, 5,10,11,12])->isNotEmpty();
-        $showAdminMode = $modules->whereIn('id', [5,6,7,8,9])->isNotEmpty();
+     $showDeveloperMode = $modules->whereIn('id', [1, 2, 3, 4, 5,6,7,8,9])->isNotEmpty();
+        $showAdminMode = $modules->whereIn('id', [5,6,7,8])->isNotEmpty();
         @endphp
         <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -109,7 +109,7 @@
               <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle {{ Str::contains(request()->path(), 'family') ? 'active' : '' }}">Families</a>
               <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
                @foreach($modules as $module)
-               @if(in_array($module->id, [10,11,12]))
+               @if(in_array($module->id, [6,7,8]))
                <li><a href="{{ route($module->url) ?? '#' }}" class="dropdown-item {{ request()->routeIs($module->url) ? 'active' : '' }}">{{ $module->name }} </a></li>
                @endif
                @endforeach
